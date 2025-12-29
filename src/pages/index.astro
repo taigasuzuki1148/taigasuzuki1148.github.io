@@ -3,9 +3,9 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <main class="container">
+  <main>
 
-    <!-- ===== Hero ===== -->
+    <!-- Hero -->
     <section class="hero">
       <h1 class="name">Taiga Suzuki</h1>
       <p class="tagline">
@@ -14,7 +14,7 @@ import Layout from "../layouts/Layout.astro";
       </p>
     </section>
 
-    <!-- ===== Projects ===== -->
+    <!-- Projects -->
     <section class="section">
       <div class="section-header">
         <h2>Projects</h2>
@@ -22,34 +22,24 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <div class="horizontal-scroll">
-
-        <div class="card">
+        <div class="project-card">
           <h3>Quantum Visualization Toolkit</h3>
-          <p>
-            Educational visualization materials for quantum measurement
-            and superconducting quantum computers.
-          </p>
+          <p>Educational visualization materials for quantum measurement and superconducting quantum computers.</p>
         </div>
 
-        <div class="card">
+        <div class="project-card">
           <h3>Human Stamp Rally</h3>
-          <p>
-            A web application developed to support student communication
-            during the COVID-19 pandemic.
-          </p>
+          <p>A web application developed to support student communication during the COVID-19 pandemic.</p>
         </div>
 
-        <div class="card">
+        <div class="project-card">
           <h3>Quantum Education Activities</h3>
-          <p>
-            Organizer and mentor for Qiskit Fall Fest and IBM Quantum programs.
-          </p>
+          <p>Organizer and mentor for Qiskit Fall Fest and IBM Quantum programs.</p>
         </div>
-
       </div>
     </section>
 
-    <!-- ===== Research ===== -->
+    <!-- Research -->
     <section class="section">
       <div class="section-header">
         <h2>Research</h2>
@@ -57,32 +47,63 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <div class="horizontal-scroll">
-
-        <div class="card">
+        <div class="project-card">
           <h3>Quantum Measurement Reversal</h3>
-          <p>
-            Investigating how quantum states can be recovered after measurement.
-          </p>
+          <p>Investigating how quantum states can be recovered after measurement.</p>
         </div>
 
-        <div class="card">
+        <div class="project-card">
           <h3>Quasi-probabilities</h3>
-          <p>
-            ABL and time-symmetric formulations of quantum theory.
-          </p>
+          <p>ABL and time-symmetric formulations of quantum theory.</p>
         </div>
 
-        <div class="card">
+        <div class="project-card">
           <h3>Quantum State Recovery</h3>
-          <p>
-            Direct-sum formalism without using measurement outcomes.
-          </p>
+          <p>Direct-sum formalism without using measurement outcomes.</p>
         </div>
-
       </div>
     </section>
 
-    <!-- ===== Footer Nav ===== -->
+    <!-- Affiliation & Timeline -->
+    <section class="section">
+      <h2 class="section-title">Affiliation & Timeline</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="time">2024 – Present</div>
+          <div class="content">
+            <div class="title">Institute of Science Tokyo</div>
+            <div class="subtitle">Undergraduate Researcher · Quantum Measurement & Information</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">2025</div>
+          <div class="content">
+            <div class="title">APS Global Summit</div>
+            <div class="subtitle">Presenter · Quantum Information</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">2024</div>
+          <div class="content">
+            <div class="title">Qiskit Fall Fest</div>
+            <div class="subtitle">Organizer · Quantum Education Program</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">2023 – 2024</div>
+          <div class="content">
+            <div class="title">Mitou Target Program</div>
+            <div class="subtitle">Developer · Quantum Visualization Toolkit</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <section class="footer">
       <a href="/cv">CV</a>
       <a href="/notes">Notes</a>
@@ -90,53 +111,4 @@ import Layout from "../layouts/Layout.astro";
     </section>
 
   </main>
-  <!-- ===== Affiliation & Timeline ===== -->
-<section class="section">
-  <h2 class="section-title">Affiliation & Timeline</h2>
-
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="time">2024 – Present</div>
-      <div class="content">
-        <div class="title">Institute of Science Tokyo</div>
-        <div class="subtitle">
-          Undergraduate Researcher · Quantum Measurement & Information
-        </div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="time">2025</div>
-      <div class="content">
-        <div class="title">APS Global Summit</div>
-        <div class="subtitle">
-          Presenter · Quantum Information
-        </div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="time">2024</div>
-      <div class="content">
-        <div class="title">Qiskit Fall Fest</div>
-        <div class="subtitle">
-          Organizer · Quantum Education Program
-        </div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="time">2023 – 2024</div>
-      <div class="content">
-        <div class="title">Mitou Target Program</div>
-        <div class="subtitle">
-          Developer · Quantum Visualization Toolkit
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 </Layout>
