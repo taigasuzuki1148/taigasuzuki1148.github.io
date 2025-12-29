@@ -2,24 +2,74 @@
 import Layout from "../layouts/Layout.astro";
 ---
 <Layout>
-  <main style="min-height: 100vh; display: flex; align-items: center;">
-    <div style="max-width: 900px; padding: 0 32px; margin: auto;">
-      
-      <h1 style="font-size: 3rem; font-weight: 600; letter-spacing: -0.02em;">
-        I study quantum measurement<br />
-        and information.
-      </h1>
+  <main style="padding: 48px 24px; max-width: 1200px; margin: auto;">
 
-      <p style="margin-top: 24px; font-size: 1.25rem; color: var(--text-sub);">
-        Graduate researcher at Institute of Science Tokyo.
+    <!-- ===== Hero / Projects ===== -->
+    <section style="text-align: center; margin-bottom: 64px;">
+      <h1 style="font-size: 3rem; font-weight: 600; margin-bottom: 16px;">
+        Latest Projects
+      </h1>
+      <p style="font-size: 1.2rem; color: var(--text-sub); margin-bottom: 32px;">
+        Explore my latest work and highlights.
       </p>
 
-      <nav style="margin-top: 48px; font-size: 1.1rem;">
-        <a href="/research" style="margin-right: 32px; color: var(--accent); text-decoration: none;">Research</a>
-        <a href="/notes" style="margin-right: 32px; color: var(--accent); text-decoration: none;">Notes</a>
-        <a href="/cv" style="color: var(--accent); text-decoration: none;">CV</a>
-      </nav>
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
 
-    </div>
+        <!-- Project Card 1 -->
+        <a href="/projects/quantum-toolkit" style="text-decoration: none; width: 300px;">
+          <div style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 24px;">
+            <h3 style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 8px;">
+              Quantum Toolkit
+            </h3>
+            <p style="font-size: 1rem; color: var(--text-sub);">
+              A set of tools for quantum measurement visualization.
+            </p>
+          </div>
+        </a>
+
+        <!-- Project Card 2 -->
+        <a href="/projects/abl-notes" style="text-decoration: none; width: 300px;">
+          <div style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 24px;">
+            <h3 style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 8px;">
+              ABL Notes
+            </h3>
+            <p style="font-size: 1rem; color: var(--text-sub);">
+              Intuitive explanations of ABL quasi-probabilities.
+            </p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===== Research ===== -->
+    <section style="margin-top: 64px;">
+      <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 16px;">
+        Research
+      </h2>
+      <p style="font-size: 1rem; color: var(--text-sub); margin-bottom: 24px;">
+        My current research focuses on fundamental questions in quantum measurement and information.
+      </p>
+
+      <ul style="list-style: none; padding: 0; font-size: 1rem;">
+        <li style="margin-bottom: 12px;">
+          • <strong>Quantum measurement reversal</strong> – Understanding how quantum states can be restored after measurement.
+        </li>
+        <li style="margin-bottom: 12px;">
+          • <strong>Quasi-probabilities</strong> – Exploring ABL and related representations.
+        </li>
+        <li style="margin-bottom: 12px;">
+          • <strong>Visual explanations</strong> – Bridging intuition and formal theory.
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Bottom Nav ===== -->
+    <section style="margin-top: 64px; text-align: center;">
+      <a href="/notes" style="margin-right: 32px; color: var(--accent); text-decoration: none;">Notes</a>
+      <a href="/cv" style="margin-right: 32px; color: var(--accent); text-decoration: none;">CV</a>
+      <a href="/about" style="color: var(--accent); text-decoration: none;">About</a>
+    </section>
+
   </main>
 </Layout>
