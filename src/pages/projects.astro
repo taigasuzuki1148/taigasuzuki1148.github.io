@@ -1,0 +1,170 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// プロジェクトのデータ（実際にはContent Collectionsなどで管理すると楽です）
+const projects = [
+  { title: "Quantum Visualization Toolkit", category: "Research", year: "2024", color: "yellow" },
+  { title: "Human Stamp Rally", category: "Social", year: "2021", color: "red" },
+  { title: "Quantum Measurement Reversal", category: "Physics", year: "2024", color: "blue" },
+  { title: "Qiskit Fall Fest", category: "Education", year: "2024", color: "yellow" },
+  { title: "Quasi-probabilities", category: "Physics", year: "2023", color: "red" },
+  { title: "Direct-sum Formalism", category: "Research", year: "2024", color: "blue" },
+];
+---
+
+<Layout title="Projects | Taiga Suzuki">
+  <main class="browse-page">
+    <header class="browse-header">
+      <div class="breadcrumb"><a href="/">← INDEX</a></div>
+      <h1 class="page-title">Selected<br/>Works</h1>
+      
+      <nav class="filter-bar">
+        <span class="filter-label">Filter by:</span>
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Research</button>
+        <button class="filter-btn">Education</button>
+        <button class="filter-btn">Technology</button>
+      </nav>
+    </header>
+
+    <div class="project-grid">
+      {projects.map((p) => (
+        <article class={`grid-item theme-${p.color}`}>
+          <div class="item-info">
+            <span class="item-year">{p.year}</span>
+            <span class="item-category">{p.category}</span>
+          </div>
+          <h3 class="item-title">{p.title}</h3>
+          <div class="item-footer">
+            <span class="view-details">VIEW PROJECT ↗</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* --- Browse Page Specific Styles --- */
+  .browse-page {
+    max-width: 100%; /* 全幅に近い広さ */
+    margin: 0;
+    padding: 0;
+  }
+
+  .browse-header {
+    padding: 60px 24px;
+    border-bottom: 8px solid #000;
+  }
+
+  .breadcrumb a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 900;
+    font-size: 1.2rem;
+  }
+
+  .page-title {
+    font-size: clamp(4rem, 15vw, 12rem);
+    font-weight: 900;
+    line-height: 0.85;
+    text-transform: uppercase;
+    margin: 40px 0;
+    letter-spacing: -0.05em;
+  }
+
+  /* Filter Bar */
+  .filter-bar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .filter-btn {
+    background: none;
+    border: 2px solid #000;
+    padding: 8px 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background-color: #000;
+    color: #fff;
+  }
+
+  /* Project Grid */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    border-bottom: 1px solid #000;
+  }
+
+  .grid-item {
+    aspect-ratio: 1 / 1; /* 正方形 */
+    border: 1px solid #000;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .item-info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+  }
+
+  .item-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+    word-break: break-word;
+  }
+
+  .view-details {
+    font-weight: 900;
+    border-bottom: 4px solid #000;
+    padding-bottom: 4px;
+    font-size: 1.1rem;
+  }
+
+  /* Hover Themes - Aalto Colors */
+  .theme-yellow:hover { background-color: #ffcd00; }
+  .theme-red:hover { background-color: #ff0000; color: #fff; }
+  .theme-red:hover .view-details { border-color: #fff; }
+  .theme-blue:hover { background-color: #00549f; color: #fff; }
+  .theme-blue:hover .view-details { border-color: #fff; }
+
+  .grid-item:hover {
+    transform: scale(0.98); /* わずかに凹むような視覚効果 */
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+    .page-title {
+      font-size: 4rem;
+    }
+  }
+</style>

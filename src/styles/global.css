@@ -1,60 +1,62 @@
+/* --- Aalto University Style Design System --- */
 :root {
   --text-main: #000000;
-  --text-sub: #000000;
+  --text-sub: #555555;
   --accent-yellow: #ffcd00; /* Aalto Yellow */
   --accent-red: #ff0000;    /* Aalto Red */
   --accent-blue: #00549f;   /* Aalto Blue */
   --bg: #ffffff;
   --border-color: #000000;
+  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Aalto Sansに近いもの */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--text-main);
   background-color: var(--bg);
-  line-height: 1.2; /* Aaltoは少し詰め気味の行間が特徴 */
-  -webkit-font-smoothing: grayscale;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
-  max-width: 1400px; /* 少し広めに */
+  max-width: 1400px;
   margin: auto;
   padding: 60px 24px;
 }
 
-/* --- Hero --- */
+/* --- Hero (Index Page) --- */
 .hero {
-  text-align: left; /* 左寄せ */
-  margin-bottom: 120px;
-  border-bottom: 8px solid var(--border-color); /* 太い下線 */
+  text-align: left;
+  margin-bottom: 100px;
+  border-bottom: 8px solid var(--border-color);
   padding-bottom: 40px;
 }
 
 .name {
-  font-size: clamp(3rem, 10vw, 8rem); /* 非常に巨大な文字 */
+  font-size: clamp(3rem, 10vw, 8rem);
   font-weight: 900;
   letter-spacing: -0.04em;
-  text-transform: uppercase; /* 大文字 */
+  text-transform: uppercase;
   margin: 0;
 }
 
 .tagline {
   margin-top: 24px;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
-  max-width: 800px;
+  max-width: 900px;
   line-height: 1.1;
 }
 
-/* --- Section --- */
+/* --- Section Layout --- */
 .section {
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 }
 
 .section-header {
-  border-top: 2px solid var(--border-color); /* 上のラインで区切る */
+  border-top: 2px solid var(--border-color);
   padding-top: 16px;
   margin-bottom: 40px;
   display: flex;
@@ -63,53 +65,57 @@ main {
 }
 
 .section-header h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 900;
   text-transform: uppercase;
   margin: 0;
 }
 
+/* --- Browse Button --- */
 .browse {
-  font-weight: 700;
+  font-weight: 900;
   text-transform: uppercase;
-  border-bottom: 2px solid var(--border-color);
+  text-decoration: none;
+  color: #000;
+  border: 2px solid #000;
+  padding: 6px 16px;
+  transition: var(--transition);
 }
 
-/* --- Horizontal Scroll (Aalto Style) --- */
+/* --- Horizontal Scroll Container --- */
 .horizontal-scroll {
   display: flex;
-  gap: 0; /* 隙間をなくしてグリッド状に見せるのもAalto流 */
+  gap: 0;
   overflow-x: auto;
-  padding: 20px 0;
   margin: 0 -24px;
-  padding-left: 24px;
+  padding: 20px 24px 40px 24px;
+  scrollbar-width: none;
 }
 
-/* --- Card (Aalto Style) --- */
-.project-card,
-.card {
-  flex: 0 0 400px;
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Card Base (Project & Research) --- */
+.project-card {
+  flex: 0 0 380px;
   background: var(--bg);
   padding: 40px;
-  border: 1px solid var(--border-color); /* 細い枠線 */
-  margin-right: -1px; /* 枠線を重ねてグリッド感を出す */
+  border: 1px solid var(--border-color);
+  margin-right: -1px; /* Borders overlap for grid effect */
   display: flex;
   flex-direction: column;
-  height: 450px;
+  height: 400px;
   justify-content: space-between;
-  transition: all 0.2s ease-in-out;
+  transition: var(--transition);
   cursor: pointer;
+  position: relative;
 }
 
-/* ホバー時にAaltoの原色に切り替える */
-.project-card:nth-child(3n+1):hover { background-color: var(--accent-yellow); }
-.project-card:nth-child(3n+2):hover { background-color: var(--accent-red); color: white; }
-.project-card:nth-child(3n+3):hover { background-color: var(--accent-blue); color: white; }
-
-.project-card:hover {
-  transform: translateY(-10px);
-  z-index: 10;
-  box-shadow: 20px 20px 0px #000; /* Appleのような影ではなく、固い影 */
+.card-meta {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 .project-card h3 {
@@ -117,63 +123,182 @@ main {
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1;
-  margin: 0;
+  margin: 20px 0;
 }
 
 .project-card p {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
-/* --- Timeline (Academic List Style) --- */
+/* --- Specific Card Hovers (Color Logic) --- */
+/* Projects = Yellow */
+.project-card.is-project:hover {
+  background-color: var(--accent-yellow);
+  color: #000;
+  transform: translateY(-10px);
+  box-shadow: 15px 15px 0px #000;
+  z-index: 2;
+}
+
+/* Research = Blue */
+.project-card.is-research:hover {
+  background-color: var(--accent-blue);
+  color: #fff;
+  transform: translateY(-10px);
+  box-shadow: 15px 15px 0px #000;
+  z-index: 2;
+}
+.project-card.is-research:hover .card-meta { color: #fff; }
+
+/* Browse Button Hover Logic per Section */
+.section:has(.is-project) .browse:hover {
+  background-color: var(--accent-yellow);
+  color: #000;
+}
+
+.section:has(.is-research) .browse:hover {
+  background-color: var(--accent-blue);
+  color: #fff;
+}
+
+/* --- Awards --- */
+.awards-list {
+  border-top: 1px solid var(--border-color);
+}
+
+.award-item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  padding: 32px 24px;
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+}
+
+.award-item:hover {
+  background-color: var(--accent-red);
+  color: #fff;
+  padding-left: 40px;
+}
+
+.award-date {
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.award-name {
+  font-weight: 900;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+
+/* --- Academic Interests --- */
+.interests-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.interest-tag {
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 2px solid #000;
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.interest-tag:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* --- Timeline (Education) --- */
 .timeline {
   display: flex;
   flex-direction: column;
+  border-top: 2px solid var(--border-color);
 }
 
 .timeline-item {
   display: grid;
   grid-template-columns: 250px 1fr;
-  padding: 24px 0;
+  padding: 40px 0;
   border-bottom: 1px solid var(--border-color);
-  transition: padding-left 0.3s ease;
+  transition: var(--transition);
+  align-items: start;
 }
 
 .timeline-item:hover {
-  padding-left: 20px;
   background-color: #f2f2f2;
+  padding-left: 24px;
 }
 
 .time {
   font-size: 1.2rem;
   font-weight: 900;
+  text-transform: uppercase;
 }
 
 .content .title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 900;
   text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.content .subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-sub);
 }
 
 /* --- Footer --- */
 .footer {
-  margin-top: 100px;
-  padding: 60px 0;
-  border-top: 8px solid var(--border-color);
+  margin-top: 80px;
+  padding: 40px 0;
+  border-top: 8px solid #000;
   display: flex;
-  justify-content: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .footer a {
-  margin-right: 40px;
-  color: var(--text-main);
-  text-decoration: none;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  text-decoration: none;
+  color: #000;
+  transition: background 0.2s;
 }
 
 .footer a:hover {
-  background-color: var(--accent-yellow);
+  background: var(--accent-yellow);
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 768px) {
+  .project-card {
+    flex: 0 0 300px;
+    height: 350px;
+    padding: 24px;
+  }
+  
+  .award-item, .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .name {
+    font-size: 3rem;
+  }
+
+  .interest-tag {
+    font-size: 1.1rem;
+  }
 }

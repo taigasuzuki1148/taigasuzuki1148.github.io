@@ -1,0 +1,171 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const researchItems = [
+  {
+    year: "2025",
+    title: "Direct-sum formalism for quantum state recovery without measurement outcomes",
+    journal: "Physical Review A (Expected)",
+    tags: ["Theory", "Quantum Info"],
+    status: "Preprint",
+    link: "#"
+  },
+  {
+    year: "2024",
+    title: "Quantum Measurement Reversal in Superconducting Qubits",
+    journal: "APS March Meeting 2025 / Presentation",
+    tags: ["Experimental", "Quantum Measurement"],
+    status: "Published",
+    link: "#"
+  },
+  {
+    year: "2023",
+    title: "Quasi-probabilities and ABL formulation in time-symmetric quantum theory",
+    journal: "Internal Research Paper",
+    tags: ["Foundations", "Mathematics"],
+    status: "Archived",
+    link: "#"
+  }
+];
+---
+
+<Layout title="Research | Taiga Suzuki">
+  <main class="research-page">
+    <header class="page-header">
+      <div class="breadcrumb"><a href="/">← INDEX</a></div>
+      <h1 class="page-title">Research<br/>& Papers</h1>
+    </header>
+
+    <section class="research-list">
+      {researchItems.map((item) => (
+        <a href={item.link} class="research-item">
+          <div class="meta">
+            <span class="year">{item.year}</span>
+            <span class="status">{item.status}</span>
+          </div>
+          <div class="details">
+            <h2 class="title">{item.title}</h2>
+            <p class="journal">{item.journal}</p>
+            <div class="tags">
+              {item.tags.map(tag => <span class="tag">[{tag}]</span>)}
+            </div>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .research-page {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0;
+  }
+
+  .page-header {
+    padding: 60px 24px;
+    border-bottom: 8px solid #000;
+  }
+
+  .breadcrumb a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 900;
+    font-size: 1.2rem;
+  }
+
+  .page-title {
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 0.85;
+    text-transform: uppercase;
+    margin: 40px 0;
+    letter-spacing: -0.05em;
+  }
+
+  /* Research List */
+  .research-list {
+    border-top: none;
+  }
+
+  .research-item {
+    display: grid;
+    grid-template-columns: 180px 1fr 60px;
+    padding: 48px 24px;
+    border-bottom: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    align-items: start;
+  }
+
+  /* Hover Effect: Aalto Blue or Yellow */
+  .research-item:hover {
+    background-color: #00549f; /* Aalto Blue */
+    color: #fff;
+    padding-left: 40px; /* 少し右にずれる動き */
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+
+  .status {
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+
+  .research-item:hover .status {
+    opacity: 1;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .journal {
+    font-size: 1.3rem;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .tags {
+    display: flex;
+    gap: 12px;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .arrow {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: right;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .research-item {
+      grid-template-columns: 100px 1fr;
+    }
+    .arrow { display: none; }
+    .title { font-size: 1.6rem; }
+  }
+</style>
