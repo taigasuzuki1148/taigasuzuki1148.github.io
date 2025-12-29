@@ -48,3 +48,251 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.08);
 }
+
+/* Timeline */
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 900px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  column-gap: 32px;
+}
+
+.time {
+  font-size: 0.95rem;
+  color: #86868b;
+  letter-spacing: 0.02em;
+}
+
+.content .title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.content .subtitle {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #86868b;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 24px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 96px;
+}
+
+.name {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.tagline {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: var(--text-sub);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 96px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.browse {
+  color: var(--accent);
+}
+
+/* Horizontal scroll */
+.horizontal-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 16px;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cards */
+.card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 28px;
+  background: white;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 120px;
+}
+
+.footer a {
+  margin: 0 20px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ============================ */
+/* Section Titles */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #0f1c2f; /* 濃いブルー系 */
+}
+
+/* ============================ */
+/* Timeline / Affiliation */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1000px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  column-gap: 32px;
+  align-items: start;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f5f8fc; /* 薄いブルーグレー背景 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.time {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3c4a5b;
+  letter-spacing: 0.02em;
+}
+
+.content .title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f1c2f;
+}
+
+.content .subtitle {
+  margin-top: 6px;
+  font-size: 1rem;
+  color: #5c677d;
+  line-height: 1.5;
+}
+
+/* ============================ */
+/* Projects / Research Cards */
+.project-card {
+  border-radius: 16px;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0f1c2f;
+}
+
+.project-card p {
+  font-size: 1rem;
+  color: #5c677d;
+  line-height: 1.5;
+}
+
+/* ============================ */
+/* Bottom Nav */
+.bottom-nav a {
+  margin-right: 32px;
+  color: #0072f5; /* アクセントブルー */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.bottom-nav a:hover {
+  color: #0051a8;
+}
+
+/* ============================ */
+/* General page body */
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: #f5f8fc; /* 全体背景 */
+  color: #0f1c2f;
+}
+
+main {
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin: auto;
+}
