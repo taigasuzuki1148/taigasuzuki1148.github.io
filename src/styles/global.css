@@ -1,0 +1,23 @@
+:root {
+  --text-main: #1d1d1f;
+  --text-sub: #6e6e73;
+  --accent: #0071e3;
+  --bg: #ffffff;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Text",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  color: var(--text-main);
+  line-height: 1.6;
+}
