@@ -386,3 +386,45 @@ main {
   .project-card.is-project:active { background-color: var(--accent-yellow); }
   .project-card.is-research:active { background-color: var(--accent-blue); color: #fff; }
 }
+
+/* スクロール全体を包むコンテナ */
+.scroll-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* 既存の横スクロールの設定（再確認） */
+.horizontal-scroll {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  margin: 0 -24px;
+  padding: 20px 24px 20px 24px;
+  /* 標準のスクロールバーを完全に隠す */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.horizontal-scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* カスタムスクロールバーの土台 */
+.custom-scrollbar {
+  width: 200px; /* バーの全体の長さ（お好みで調整） */
+  height: 4px;   /* バーの太さ */
+  background: #e0e0e0; /* 土台の色（薄いグレー） */
+  margin: 10px auto 0; /* 中央寄せ */
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 動くバーの部分 */
+.scroll-progress {
+  width: 40%; /* バーの「つまみ」の長さ */
+  height: 100%;
+  background: #000; /* 黒色（Aaltoスタイル） */
+  position: absolute;
+  left: 0;
+  transition: transform 0.1s ease-out;
+}

@@ -2,36 +2,46 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
+<Layout title="Taiga Suzuki | Portfolio">
   <main>
     <section class="hero">
       <h1 class="name">Taiga Suzuki</h1>
       <p class="tagline">
         Undergraduate Researcher at Institute of Science Tokyo. 
-        Curiosity-driven exploration in Quantum Measurement Theory, Visualization, and Education.
+        Bridging Quantum Measurement Theory, Visualization, and Education through curiosity-driven exploration.
       </p>
     </section>
 
     <section class="section">
       <div class="section-header">
         <h2>Projects</h2>
-        <a href="/projects" class="browse">Browse ↗</a>
+        <a href="/projects" class="browse">Browse</a>
       </div>
-      <div class="horizontal-scroll">
-        <div class="project-card is-project">
-          <div class="card-meta">2023-2024 / IPA</div>
-          <h3>Quantum Visualization Toolkit</h3>
-          <p>Lead Developer in Mitou Target Program. Physical visualizer for superconducting qubits.</p>
+      <div class="scroll-wrapper">
+        <div class="horizontal-scroll" id="scroll-projects">
+          <div class="project-card is-project">
+            <div class="card-meta">2023-2024 / IPA</div>
+            <h3>Quantum Visualization Toolkit</h3>
+            <p>Lead Developer in Mitou Target Program. Physical visualizer for superconducting qubits.</p>
+          </div>
+          <div class="project-card is-project">
+            <div class="card-meta">2024 / IBM Quantum</div>
+            <h3>Qiskit Fall Fest Tokyo</h3>
+            <p>Lead Organizer. Hosting one of Japan's largest quantum hackathons.</p>
+          </div>
+          <div class="project-card is-project">
+            <div class="card-meta">2021 / Web App</div>
+            <h3>Human Stamp Rally</h3>
+            <p>Community platform built with Astro to connect students during the pandemic.</p>
+          </div>
+          <div class="project-card is-project">
+            <div class="card-meta">Next Step</div>
+            <h3>Coming Soon</h3>
+            <p>Future explorations in quantum computing and education.</p>
+          </div>
         </div>
-        <div class="project-card is-project">
-          <div class="card-meta">2024 / IBM Quantum</div>
-          <h3>Qiskit Fall Fest Tokyo</h3>
-          <p>Lead Organizer. Hosting one of Japan's largest quantum hackathons.</p>
-        </div>
-        <div class="project-card is-project">
-          <div class="card-meta">2021 / Web App</div>
-          <h3>Human Stamp Rally</h3>
-          <p>Community platform built with Astro to connect students during the pandemic.</p>
+        <div class="custom-scrollbar">
+          <div class="scroll-progress" id="progress-projects"></div>
         </div>
       </div>
     </section>
@@ -39,23 +49,28 @@ import Layout from "../layouts/Layout.astro";
     <section class="section">
       <div class="section-header">
         <h2>Research</h2>
-        <a href="/research" class="browse">Browse ↗</a>
+        <a href="/research" class="browse">Browse</a>
       </div>
-      <div class="horizontal-scroll">
-        <div class="project-card is-research">
-          <div class="card-meta">Theory</div>
-          <h3>Quantum State Recovery</h3>
-          <p>Direct-sum formalism for recovery without measurement outcomes.</p>
+      <div class="scroll-wrapper">
+        <div class="horizontal-scroll" id="scroll-research">
+          <div class="project-card is-research">
+            <div class="card-meta">Theory</div>
+            <h3>Quantum State Recovery</h3>
+            <p>Direct-sum formalism for recovery without measurement outcomes.</p>
+          </div>
+          <div class="project-card is-research">
+            <div class="card-meta">Foundations</div>
+            <h3>Quasi-probabilities</h3>
+            <p>Time-symmetric quantum theory and Aharonov-Bergmann-Lebowitz formulation.</p>
+          </div>
+          <div class="project-card is-research">
+            <div class="card-meta">Hardware</div>
+            <h3>Measurement Reversal</h3>
+            <p>Investigating the physical reversal of measurements in superconducting circuits.</p>
+          </div>
         </div>
-        <div class="project-card is-research">
-          <div class="card-meta">Foundations</div>
-          <h3>Quasi-probabilities</h3>
-          <p>Time-symmetric quantum theory and Aharonov-Bergmann-Lebowitz formulation.</p>
-        </div>
-        <div class="project-card is-research">
-          <div class="card-meta">Hardware</div>
-          <h3>Measurement Reversal</h3>
-          <p>Investigating the physical reversal of measurements in superconducting circuits.</p>
+        <div class="custom-scrollbar">
+          <div class="scroll-progress" id="progress-research"></div>
         </div>
       </div>
     </section>
@@ -91,6 +106,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="interest-tag">Information Theory</div>
         <div class="interest-tag">Scientific Visualization</div>
         <div class="interest-tag">HCI</div>
+        <div class="interest-tag">Open Quantum Systems</div>
       </div>
     </section>
 
@@ -112,7 +128,65 @@ import Layout from "../layouts/Layout.astro";
     <footer class="footer">
       <a href="/cv">CV</a>
       <a href="/notes">Notes</a>
-      <a href="https://www.linkedin.com/in/taiga-suzuki-0a3a08251">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/taiga-suzuki-0a3a08251" target="_blank">LinkedIn</a>
     </footer>
   </main>
 </Layout>
+
+<script>
+  // スクロール連動インジケーターの制御
+  function setupScrollSync(containerId, progressId) {
+    const container = document.getElementById(containerId);
+    const progress = document.getElementById(progressId);
+
+    if (container && progress) {
+      container.addEventListener('scroll', () => {
+        const scrollLeft = container.scrollLeft;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        const scrollPercent = (scrollLeft / maxScroll) * 100;
+        // バーの長さが仮に30%なら、最大で70%動かせる
+        progress.style.transform = `translateX(${scrollPercent * 2.33}%)`;
+      });
+    }
+  }
+
+  // ProjectsとResearchの両方に適用
+  setupScrollSync('scroll-projects', 'progress-projects');
+  setupScrollSync('scroll-research', 'progress-research');
+
+  const containers = document.querySelectorAll('.horizontal-scroll');
+
+containers.forEach(container => {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  container.addEventListener('mousedown', (e) => {
+    isDown = true;
+    container.style.cursor = 'grabbing';
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    isDown = false;
+    container.style.cursor = 'grab';
+  });
+
+  container.addEventListener('mouseup', () => {
+    isDown = false;
+    container.style.cursor = 'grab';
+  });
+
+  container.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 2; // スクロール速度の調整
+    container.scrollLeft = scrollLeft - walk;
+  });
+  
+  // 初期カーソルを設定
+  container.style.cursor = 'grab';
+});
+</script>
