@@ -302,3 +302,87 @@ main {
     font-size: 1.1rem;
   }
 }
+
+/* --- Responsive Enhancements --- */
+@media (max-width: 768px) {
+  main {
+    padding: 40px 16px; /* 余白を少し詰める */
+  }
+
+  /* Hero: 文字サイズを画面幅に合わせる */
+  .hero {
+    margin-bottom: 60px;
+    border-bottom-width: 4px; /* 線を少し細く */
+  }
+
+  .name {
+    font-size: 15vw; /* 画面幅いっぱいに広がる文字 */
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  /* Section Header: 縦に並べる */
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  /* Horizontal Scroll: スマホでは少しカード幅を狭める */
+  .project-card {
+    flex: 0 0 280px; /* 画面に収まりやすく */
+    height: 320px;
+    padding: 24px;
+  }
+
+  .project-card h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Awards & Timeline: 2列から1列へ */
+  .award-item, .timeline-item {
+    grid-template-columns: 1fr; /* 縦並び */
+    gap: 8px;
+    padding: 24px 0;
+  }
+
+  .award-date, .time {
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+
+  .award-name, .content .title {
+    font-size: 1.4rem;
+  }
+
+  /* Academic Interests: タグを少し小さく */
+  .interest-tag {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+
+  /* Footer: リンクの間隔を広げて押しやすく */
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+    border-top-width: 4px;
+  }
+}
+
+/* タッチデバイスでのホバー対策 */
+@media (hover: none) {
+  .project-card:hover, .award-item:hover, .timeline-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* タッチ時は背景色だけ変えるか、そのままにする */
+  .project-card.is-project:active { background-color: var(--accent-yellow); }
+  .project-card.is-research:active { background-color: var(--accent-blue); color: #fff; }
+}
