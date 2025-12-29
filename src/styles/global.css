@@ -21,3 +21,30 @@ body {
   color: var(--text-main);
   line-height: 1.6;
 }
+
+.horizontal-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 16px;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 24px;
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}

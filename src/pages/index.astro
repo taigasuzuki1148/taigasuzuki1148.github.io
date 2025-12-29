@@ -1,75 +1,184 @@
 ---
 import Layout from "../layouts/Layout.astro";
 ---
+
 <Layout>
-  <main style="padding: 48px 24px; max-width: 1200px; margin: auto;">
+  <main class="container">
 
-    <!-- ===== Hero / Projects ===== -->
-    <section style="text-align: center; margin-bottom: 64px;">
-      <h1 style="font-size: 3rem; font-weight: 600; margin-bottom: 16px;">
-        Latest Projects
-      </h1>
-      <p style="font-size: 1.2rem; color: var(--text-sub); margin-bottom: 32px;">
-        Explore my latest work and highlights.
-      </p>
+    <!-- ===== Projects ===== -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h1 class="section-title">Projects</h1>
+          <p class="section-subtitle">
+            Latest work. Explore what I’m building now.
+          </p>
+        </div>
+        <span class="browse">Browse ›</span>
+      </div>
 
-      <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
-
-        <!-- Project Card 1 -->
-        <a href="/projects/quantum-toolkit" style="text-decoration: none; width: 300px;">
-          <div style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 24px;">
-            <h3 style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 8px;">
-              Quantum Toolkit
-            </h3>
-            <p style="font-size: 1rem; color: var(--text-sub);">
-              A set of tools for quantum measurement visualization.
+      <div class="horizontal-scroll">
+        <a href="/projects/quantum-toolkit" class="card-link">
+          <div class="scroll-card">
+            <h3>Quantum Toolkit</h3>
+            <p>
+              Visualization tools for quantum measurement.
             </p>
           </div>
         </a>
 
-        <!-- Project Card 2 -->
-        <a href="/projects/abl-notes" style="text-decoration: none; width: 300px;">
-          <div style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 24px;">
-            <h3 style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 8px;">
-              ABL Notes
-            </h3>
-            <p style="font-size: 1rem; color: var(--text-sub);">
-              Intuitive explanations of ABL quasi-probabilities.
+        <a href="/projects/abl-notes" class="card-link">
+          <div class="scroll-card">
+            <h3>ABL Notes</h3>
+            <p>
+              Intuitive explanations of quasi-probabilities.
             </p>
           </div>
         </a>
 
+        <a href="/projects/visual-qm" class="card-link">
+          <div class="scroll-card">
+            <h3>Visual Quantum Mechanics</h3>
+            <p>
+              Bridging intuition and formal theory.
+            </p>
+          </div>
+        </a>
       </div>
     </section>
 
     <!-- ===== Research ===== -->
-    <section style="margin-top: 64px;">
-      <h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 16px;">
-        Research
-      </h2>
-      <p style="font-size: 1rem; color: var(--text-sub); margin-bottom: 24px;">
-        My current research focuses on fundamental questions in quantum measurement and information.
-      </p>
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Research</h2>
+        <span class="browse">Browse ›</span>
+      </div>
 
-      <ul style="list-style: none; padding: 0; font-size: 1rem;">
-        <li style="margin-bottom: 12px;">
-          • <strong>Quantum measurement reversal</strong> – Understanding how quantum states can be restored after measurement.
-        </li>
-        <li style="margin-bottom: 12px;">
-          • <strong>Quasi-probabilities</strong> – Exploring ABL and related representations.
-        </li>
-        <li style="margin-bottom: 12px;">
-          • <strong>Visual explanations</strong> – Bridging intuition and formal theory.
-        </li>
-      </ul>
+      <div class="horizontal-scroll">
+        <div class="scroll-card">
+          <h3>Measurement Reversal</h3>
+          <p>
+            Understanding how quantum states can be restored after measurement.
+          </p>
+        </div>
+
+        <div class="scroll-card">
+          <h3>Quasi-probabilities</h3>
+          <p>
+            ABL and time-symmetric representations.
+          </p>
+        </div>
+
+        <div class="scroll-card">
+          <h3>Visual Explanations</h3>
+          <p>
+            Making abstract quantum theory intuitive.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- ===== Bottom Nav ===== -->
-    <section style="margin-top: 64px; text-align: center;">
-      <a href="/notes" style="margin-right: 32px; color: var(--accent); text-decoration: none;">Notes</a>
-      <a href="/cv" style="margin-right: 32px; color: var(--accent); text-decoration: none;">CV</a>
-      <a href="/about" style="color: var(--accent); text-decoration: none;">About</a>
+    <section class="bottom-nav">
+      <a href="/notes">Notes</a>
+      <a href="/cv">CV</a>
+      <a href="/about">About</a>
     </section>
 
   </main>
 </Layout>
+
+<style>
+/* ===== Layout ===== */
+.container {
+  padding: 64px 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section {
+  margin-bottom: 96px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: var(--text-sub);
+  margin-top: 8px;
+}
+
+.browse {
+  color: var(--accent);
+  font-size: 1rem;
+  cursor: default;
+}
+
+/* ===== Horizontal Scroll ===== */
+.horizontal-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 16px;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Cards ===== */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.scroll-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 28px;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.scroll-card p {
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+.scroll-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+}
+
+/* ===== Bottom Nav ===== */
+.bottom-nav {
+  text-align: center;
+  margin-top: 96px;
+}
+
+.bottom-nav a {
+  margin: 0 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 1rem;
+}
+</style>
