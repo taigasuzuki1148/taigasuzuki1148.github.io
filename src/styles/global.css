@@ -56,7 +56,6 @@ main {
 }
 
 .section-header {
-  border-top: 2px solid var(--border-color);
   padding-top: 16px;
   margin-bottom: 40px;
   display: flex;
@@ -64,11 +63,46 @@ main {
   align-items: flex-end;
 }
 
+/* タイトルの左側に余白を作る */
 .section-header h2 {
   font-size: 2.5rem;
   font-weight: 900;
   text-transform: uppercase;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* 四角と文字の間隔 */
+}
+
+/* 共通の四角形のスタイル */
+.section-header h2::before {
+  content: "";
+  display: inline-block;
+  width: 24px;  /* 四角の幅 */
+  height: 24px; /* 四角の高さ（文字の高さに合わせるなら 1em） */
+  flex-shrink: 0;
+}
+
+/* 各セクションごとの色指定 */
+
+/* Projects: Yellow */
+.section.is-project-section .section-header h2::before {
+  background-color: var(--accent-yellow);
+}
+
+/* Research: Blue */
+.section.is-research-section .section-header h2::before {
+  background-color: var(--accent-blue);
+}
+
+/* Awards: Red */
+.section.is-awards-section .section-header h2::before {
+  background-color: var(--accent-red);
+}
+
+/* Education / Others: Black (Aalto Default) */
+.section.is-education-section .section-header h2::before {
+  background-color: #000;
 }
 
 /* --- Browse Button --- */
@@ -200,6 +234,12 @@ main {
   line-height: 1.1;
 }
 
+.res-names {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
 .res-desc {
   font-size: 1.1rem;
   opacity: 0.8;
@@ -213,8 +253,8 @@ main {
 
 .award-item {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  padding: 32px 24px;
+  grid-template-columns: 120px 1fr 50px;
+  padding: 32px 0px;
   border-bottom: 1px solid var(--border-color);
   transition: var(--transition);
   text-decoration: none;
@@ -224,7 +264,7 @@ main {
 .award-item:hover {
   background-color: var(--accent-red);
   color: #fff;
-  padding-left: 40px;
+  padding-left: 20px;
 }
 
 .award-date {
@@ -233,9 +273,9 @@ main {
 }
 
 .award-name {
-  font-weight: 900;
   font-size: 1.8rem;
-  margin: 0;
+  font-weight: 900;
+  margin: 0 0 4px 0;
   line-height: 1.1;
 }
 
