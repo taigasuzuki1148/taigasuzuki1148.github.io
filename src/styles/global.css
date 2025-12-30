@@ -1,10 +1,10 @@
-/* --- Aalto University Style Design System --- */
+/* --- Aalto University Style Design System: Integrated Version --- */
 :root {
   --text-main: #000000;
   --text-sub: #555555;
-  --accent-yellow: #ffcd00; /* Aalto Yellow */
-  --accent-red: #ff0000;    /* Aalto Red */
-  --accent-blue: #00549f;   /* Aalto Blue */
+  --accent-yellow: #ffcd00; /* Projects */
+  --accent-red: #ff0000;    /* Awards */
+  --accent-blue: #00549f;   /* Research */
   --bg: #ffffff;
   --border-color: #000000;
   --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -26,7 +26,7 @@ main {
   padding: 60px 24px;
 }
 
-/* --- Hero (Index Page) --- */
+/* --- Hero --- */
 .hero {
   text-align: left;
   margin-bottom: 100px;
@@ -35,7 +35,7 @@ main {
 }
 
 .name {
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-size: clamp(3rem, 15vw, 8rem);
   font-weight: 900;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -82,39 +82,45 @@ main {
   transition: var(--transition);
 }
 
-/* --- Horizontal Scroll Container --- */
+/* --- Horizontal Scroll (Projects) --- */
+.scroll-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .horizontal-scroll {
   display: flex;
   gap: 0;
   overflow-x: auto;
   margin: 0 -24px;
-  padding: 20px 24px 40px 24px;
+  padding: 20px 24px 20px 24px;
   scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
 }
 
 .horizontal-scroll::-webkit-scrollbar {
   display: none;
 }
 
-/* --- Card Base (Project & Research) --- */
 .project-card {
   flex: 0 0 380px;
   background: var(--bg);
   padding: 40px;
   border: 1px solid var(--border-color);
-  margin-right: -1px; /* Borders overlap for grid effect */
+  margin-right: -1px;
   display: flex;
   flex-direction: column;
   height: 400px;
   justify-content: space-between;
   transition: var(--transition);
-  cursor: pointer;
   position: relative;
 }
 
 .card-meta {
   font-weight: 900;
   font-size: 0.9rem;
+  text-transform: uppercase;
 }
 
 .project-card h3 {
@@ -124,13 +130,7 @@ main {
   margin: 20px 0;
 }
 
-.project-card p {
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-/* --- Specific Card Hovers (Color Logic) --- */
-/* Projects = Yellow */
+/* Hover: Projects (Yellow) */
 .project-card.is-project:hover {
   background-color: var(--accent-yellow);
   color: #000;
@@ -139,25 +139,71 @@ main {
   z-index: 2;
 }
 
-/* Research = Blue */
-.project-card.is-research:hover {
-  background-color: var(--accent-blue);
-  color: #fff;
-  transform: translateY(-10px);
-  box-shadow: 15px 15px 0px #000;
-  z-index: 2;
-}
-.project-card.is-research:hover .card-meta { color: #fff; }
-
-/* Browse Button Hover Logic per Section */
 .section:has(.is-project) .browse:hover {
   background-color: var(--accent-yellow);
-  color: #000;
 }
 
-.section:has(.is-research) .browse:hover {
+/* --- Scroll Progress Bar --- */
+.custom-scrollbar {
+  width: 200px;
+  height: 4px;
+  background: #e0e0e0;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-progress {
+  width: 40%;
+  height: 100%;
+  background: #000;
+  position: absolute;
+  left: 0;
+  transition: transform 0.1s ease-out;
+}
+
+/* --- Research Mini List (Vertical Style) --- */
+.research-mini-list {
+  border-top: 1px solid var(--border-color);
+}
+
+.research-mini-item {
+  display: grid;
+  grid-template-columns: 120px 1fr 50px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border-color);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+  align-items: center;
+}
+
+.research-mini-item:hover {
   background-color: var(--accent-blue);
   color: #fff;
+  padding-left: 20px;
+}
+
+.research-mini-item .meta {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.res-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 0 0 4px 0;
+  line-height: 1.1;
+}
+
+.res-desc {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin: 0;
 }
 
 /* --- Awards --- */
@@ -189,8 +235,9 @@ main {
 .award-name {
   font-weight: 900;
   font-size: 1.8rem;
+  text-transform: uppercase;
   margin: 0;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 /* --- Academic Interests --- */
@@ -245,14 +292,9 @@ main {
 .content .title {
   font-size: 1.8rem;
   font-weight: 900;
+  text-transform: uppercase;
   line-height: 1.1;
   margin-bottom: 8px;
-}
-
-.content .subtitle {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--text-sub);
 }
 
 /* --- Footer --- */
@@ -277,150 +319,66 @@ main {
   background: var(--accent-yellow);
 }
 
-/* --- Responsive Layout --- */
-@media (max-width: 768px) {
-  .project-card {
-    flex: 0 0 300px;
-    height: 350px;
-    padding: 24px;
-  }
-  
-  .award-item, .timeline-item {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  
-  .name {
-    font-size: 3rem;
-  }
-
-  .interest-tag {
-    font-size: 1.1rem;
-  }
+/* iframeを持つカードの特別ルール */
+.project-card.has-iframe {
+  padding: 20px; /* 余白を少し詰めて中身を大きく見せる */
+  justify-content: flex-start;
+  gap: 15px;
 }
 
-/* --- Responsive Enhancements --- */
-@media (max-width: 768px) {
-  main {
-    padding: 40px 16px; /* 余白を少し詰める */
-  }
-
-  /* Hero: 文字サイズを画面幅に合わせる */
-  .hero {
-    margin-bottom: 60px;
-    border-bottom-width: 4px; /* 線を少し細く */
-  }
-
-  .name {
-    font-size: 15vw; /* 画面幅いっぱいに広がる文字 */
-  }
-
-  .tagline {
-    font-size: 1.2rem;
-  }
-
-  /* Section Header: 縦に並べる */
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .section-header h2 {
-    font-size: 2rem;
-  }
-
-  /* Horizontal Scroll: スマホでは少しカード幅を狭める */
-  .project-card {
-    flex: 0 0 280px; /* 画面に収まりやすく */
-    height: 320px;
-    padding: 24px;
-  }
-
-  .project-card h3 {
-    font-size: 1.5rem;
-  }
-
-  /* Awards & Timeline: 2列から1列へ */
-  .award-item, .timeline-item {
-    grid-template-columns: 1fr; /* 縦並び */
-    gap: 8px;
-    padding: 24px 0;
-  }
-
-  .award-date, .time {
-    font-size: 1rem;
-    opacity: 0.7;
-  }
-
-  .award-name, .content .title {
-    font-size: 1.4rem;
-  }
-
-  /* Academic Interests: タグを少し小さく */
-  .interest-tag {
-    font-size: 1rem;
-    padding: 8px 12px;
-  }
-
-  /* Footer: リンクの間隔を広げて押しやすく */
-  .footer {
-    flex-direction: column;
-    gap: 20px;
-    border-top-width: 4px;
-  }
-}
-
-/* タッチデバイスでのホバー対策 */
-@media (hover: none) {
-  .project-card:hover, .award-item:hover, .timeline-item:hover {
-    transform: none;
-    box-shadow: none;
-  }
-  
-  /* タッチ時は背景色だけ変えるか、そのままにする */
-  .project-card.is-project:active { background-color: var(--accent-yellow); }
-  .project-card.is-research:active { background-color: var(--accent-blue); color: #fff; }
-}
-
-/* スクロール全体を包むコンテナ */
-.scroll-wrapper {
-  position: relative;
+.iframe-container {
   width: 100%;
-}
-
-/* 既存の横スクロールの設定（再確認） */
-.horizontal-scroll {
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  margin: 0 -24px;
-  padding: 20px 24px 20px 24px;
-  /* 標準のスクロールバーを完全に隠す */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-}
-.horizontal-scroll::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
-}
-
-/* カスタムスクロールバーの土台 */
-.custom-scrollbar {
-  width: 200px; /* バーの全体の長さ（お好みで調整） */
-  height: 4px;   /* バーの太さ */
-  background: #e0e0e0; /* 土台の色（薄いグレー） */
-  margin: 10px auto 0; /* 中央寄せ */
-  border-radius: 2px;
+  flex-grow: 1; /* 残りのスペースをすべて使う */
+  background: #eee;
+  border: 1px solid #000;
   position: relative;
   overflow: hidden;
 }
 
-/* 動くバーの部分 */
-.scroll-progress {
-  width: 40%; /* バーの「つまみ」の長さ */
+.iframe-container iframe {
+  width: 100%;
   height: 100%;
-  background: #000; /* 黒色（Aaltoスタイル） */
-  position: absolute;
-  left: 0;
-  transition: transform 0.1s ease-out;
+  border: none;
+}
+
+/* iframeの上でドラッグ操作を邪魔させないための設定（必要に応じて） */
+/* ユーザーがiframeを操作したい時は、一度クリックしてからにする等の工夫 */
+
+/* --- Responsive Layout --- */
+@media (max-width: 768px) {
+  main { padding: 40px 16px; }
+  .hero { margin-bottom: 60px; border-bottom-width: 4px; }
+  .name { font-size: 15vw; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .section-header h2 { font-size: 2rem; }
+
+  .project-card {
+    flex: 0 0 280px;
+    height: 320px;
+    padding: 24px;
+  }
+  
+  .research-mini-item, .award-item, .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 24px 0;
+  }
+
+  .award-name, .content .title, .res-title {
+    font-size: 1.4rem;
+  }
+
+  .interest-tag { font-size: 1rem; }
+  .footer { flex-direction: column; gap: 20px; border-top-width: 4px; }
+}
+
+/* No-hover devices (Touch) */
+@media (hover: none) {
+  .project-card:hover, .award-item:hover, .timeline-item:hover, .research-mini-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .project-card.is-project:active { background-color: var(--accent-yellow); }
+  .research-mini-item:active { background-color: var(--accent-blue); color: #fff; }
+  .award-item:active { background-color: var(--accent-red); color: #fff; }
 }

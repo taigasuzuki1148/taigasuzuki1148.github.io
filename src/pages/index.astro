@@ -30,11 +30,17 @@ import Layout from "../layouts/Layout.astro";
       </div>
       <div class="scroll-wrapper">
         <div class="horizontal-scroll" id="scroll-projects">
-          <div class="project-card is-project">
-            <div class="card-meta">2023-2024 / IPA</div>
-            <h3>Quantum Visualization Toolkit</h3>
-            <p>Lead Developer in Mitou Target Program. Physical visualizer for superconducting qubits.</p>
-          </div>
+          <div class="project-card is-project has-iframe">
+  			<div class="card-meta">Interactive Demo</div>
+  				<h3>Quantum Visualizer</h3>
+  
+  				<div class="iframe-container">
+    			<iframe src="Multiple_gate.html" loading="lazy"　title="Quantum Demo">
+    			</iframe>
+  				</div>
+
+  			<p>Touch the visualization above to explore quantum states.</p>
+			</div>
           <div class="project-card is-project">
             <div class="card-meta">2024 / IBM Quantum</div>
             <h3>Qiskit Fall Fest Tokyo</h3>
@@ -59,30 +65,46 @@ import Layout from "../layouts/Layout.astro";
 
     <section class="section">
       <div class="section-header">
-        <h2>Research</h2>
-        <a href="/research" class="browse">Browse</a>
+        <h2>Latest Research</h2>
+        <a href="/research" class="browse">Browse All ↗</a>
       </div>
-      <div class="scroll-wrapper">
-        <div class="horizontal-scroll" id="scroll-research">
-          <div class="project-card is-research">
-            <div class="card-meta">Theory</div>
-            <h3>Quantum State Recovery</h3>
-            <p>Direct-sum formalism for recovery without measurement outcomes.</p>
+      
+      <div class="research-mini-list">
+        <a href="/research" class="research-mini-item">
+          <div class="meta">
+            <span class="year">2025</span>
+            <span class="label">Preprint</span>
           </div>
-          <div class="project-card is-research">
-            <div class="card-meta">Foundations</div>
-            <h3>Quasi-probabilities</h3>
-            <p>Time-symmetric quantum theory and Aharonov-Bergmann-Lebowitz formulation.</p>
+          <div class="content">
+            <h3 class="res-title">Direct-sum formalism for quantum state recovery without measurement outcomes</h3>
+            <p class="res-desc">Exploring new theoretical frameworks for state recovery in open quantum systems.</p>
           </div>
-          <div class="project-card is-research">
-            <div class="card-meta">Hardware</div>
-            <h3>Measurement Reversal</h3>
-            <p>Investigating the physical reversal of measurements in superconducting circuits.</p>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a href="/research" class="research-mini-item">
+          <div class="meta">
+            <span class="year">2024</span>
+            <span class="label">Presentation</span>
           </div>
-        </div>
-        <div class="custom-scrollbar">
-          <div class="scroll-progress" id="progress-research"></div>
-        </div>
+          <div class="content">
+            <h3 class="res-title">Quantum Measurement Reversal in Superconducting Qubits</h3>
+            <p class="res-desc">Investigating the physical realizability of measurement reversal at QIT50.</p>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a href="/research" class="research-mini-item">
+          <div class="meta">
+            <span class="year">2023</span>
+            <span class="label">Theory</span>
+          </div>
+          <div class="content">
+            <h3 class="res-title">Quasi-probabilities and ABL formulation in time-symmetric quantum theory</h3>
+            <p class="res-desc">Analysis of time-symmetric formulations and their probabilistic interpretations.</p>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
       </div>
     </section>
 
