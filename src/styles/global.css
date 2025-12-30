@@ -319,31 +319,6 @@ main {
   background: var(--accent-yellow);
 }
 
-/* iframeを持つカードの特別ルール */
-.project-card.has-iframe {
-  padding: 20px; /* 余白を少し詰めて中身を大きく見せる */
-  justify-content: flex-start;
-  gap: 15px;
-}
-
-.iframe-container {
-  width: 100%;
-  flex-grow: 1; /* 残りのスペースをすべて使う */
-  background: #eee;
-  border: 1px solid #000;
-  position: relative;
-  overflow: hidden;
-}
-
-.iframe-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* iframeの上でドラッグ操作を邪魔させないための設定（必要に応じて） */
-/* ユーザーがiframeを操作したい時は、一度クリックしてからにする等の工夫 */
-
 /* --- Responsive Layout --- */
 @media (max-width: 768px) {
   main { padding: 40px 16px; }
