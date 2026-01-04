@@ -393,8 +393,20 @@ main {
   .section-header h2 { font-size: 1.8rem; }
   .section-header h2::before { width: 18px; height: 18px; }
 
+  /* --- Projects: vertical list on mobile --- */
+  .horizontal-scroll {
+    display: flex;
+    flex-direction: column;
+    overflow-x: visible;
+    margin: 0;
+    padding: 0;
+  }
+
   .project-card {
-    flex: 0 0 280px;
+    flex: none;
+    width: 100%;
+    height: auto;
+    margin: 0 0 -1px 0;
     padding: 24px;
   }
 
@@ -411,33 +423,28 @@ main {
   }
 }
 
-/* --- Touch: disable hover, use active --- */
-@media (hover: none) {
-  .project-card:hover,
-  .research-mini-item:hover,
-  .award-item:hover,
-  .timeline-item:hover {
-    background: inherit;
-    color: inherit;
-    transform: none;
-    box-shadow: none;
-    padding-left: initial;
+  .hero { margin-bottom: 60px; padding-bottom: 24px; }
+
+  .name { font-size: clamp(2.8rem, 14vw, 4.5rem); }
+  .tagline { font-size: 1.2rem; }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
-  .project-card:active {
-    background: var(--accent-yellow);
-    transform: scale(0.97);
+  .section-header h2 { font-size: 1.8rem; }
+  .section-header h2::before { width: 18px; height: 18px; }
+
+  .project-card {
+    flex: 0 0 280px;
+    padding: 24px;
   }
 
-  .research-mini-item:active {
-    background: var(--accent-blue);
-    color: #fff;
+  .research-mini-item,
+  .award-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 0;
   }
-
-  .award-item:active {
-    background: var(--accent-red);
-    color: #fff;
-  }
-
-  .timeline-item:active { opacity: 0.85; }
-}
