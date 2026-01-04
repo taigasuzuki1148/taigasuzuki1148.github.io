@@ -373,41 +373,71 @@ main {
   background: var(--accent-yellow);
 }
 
-/* --- Responsive Layout --- */
+/* ================================
+   Mobile / Touch Devices
+   ================================ */
 @media (max-width: 768px) {
   main { padding: 40px 16px; }
-  .hero { margin-bottom: 60px; border-bottom-width: 4px; }
-  .name { font-size: 15vw; }
-  .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .section-header h2 { font-size: 2rem; }
+
+  .hero { margin-bottom: 60px; padding-bottom: 24px; }
+
+  .name { font-size: clamp(2.8rem, 14vw, 4.5rem); }
+  .tagline { font-size: 1.2rem; }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .section-header h2 { font-size: 1.8rem; }
+  .section-header h2::before { width: 18px; height: 18px; }
 
   .project-card {
     flex: 0 0 280px;
-    height: 320px;
     padding: 24px;
   }
-  
-  .research-mini-item, .award-item, .timeline-item {
+
+  .research-mini-item,
+  .award-item {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 12px;
     padding: 24px 0;
   }
 
-  .award-name, .content .title, .res-title {
-    font-size: 1.4rem;
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
-
-  .interest-tag { font-size: 1rem; }
-  .footer { flex-direction: column; gap: 20px; border-top-width: 4px; }
 }
 
-/* No-hover devices (Touch) */
+/* --- Touch: disable hover, use active --- */
 @media (hover: none) {
-  .project-card:hover, .award-item:hover, .timeline-item:hover, .research-mini-item:hover {
+  .project-card:hover,
+  .research-mini-item:hover,
+  .award-item:hover,
+  .timeline-item:hover {
+    background: inherit;
+    color: inherit;
     transform: none;
     box-shadow: none;
+    padding-left: initial;
   }
-  .project-card.is-project:active { background-color: var(--accent-yellow); }
-  .research-mini-item:active { background-color: var(--accent-blue); color: #fff; }
-  .award-item:active { background-color: var(--accent-red); color: #fff; }
+
+  .project-card:active {
+    background: var(--accent-yellow);
+    transform: scale(0.97);
+  }
+
+  .research-mini-item:active {
+    background: var(--accent-blue);
+    color: #fff;
+  }
+
+  .award-item:active {
+    background: var(--accent-red);
+    color: #fff;
+  }
+
+  .timeline-item:active { opacity: 0.85; }
 }
