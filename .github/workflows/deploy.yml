@@ -28,7 +28,7 @@ jobs:
       - run: npm ci
 
       # GitHub Pages(プロジェクトページ)は /REPO/ 配下になるので base を合わせる
-      - run: npm run build -- --base /${{ github.event.repository.name }}/
+      - run: npm run build -- --base /
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
