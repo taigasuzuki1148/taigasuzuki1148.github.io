@@ -23,9 +23,21 @@ jobs:
         with:
           node-version: 20
 
+      # 1) Astro をビルド（dist/ ができる）
       - run: npm ci
       - run: npm run build
 
+      # 2) Slidev を /qi4u_day1/ としてビルドして、Astroの dist に合流
+      #    ↓ここは Slidev の場所に合わせて cd を変更
+      - name: Build Slidev into /qi4u_day1/
+        run: |
+          cd qi4u_day1
+          npm ci
+          npm run build -- --base /qi4u_day1/
+          mkdir -p ../dist/qi4u_day1
+          cp -r dist/* ../dist/qi4u_day1/
+
+      # 3) まとめた dist を Pages にアップロード
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
